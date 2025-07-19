@@ -13,6 +13,14 @@
 <body style="padding: 5% 20% 5% 20%">
 <h1>The Overdesign Poem</h1>
 <p><i>Also known as: Why I hate modern software development</i></p>
+<button id="playButton" name="playButton">Play sound</button>
+<script type="module">
+    const audio = new Audio('/audio/malaisha-intro.wav');
+    audio.volume = 0.5;
+    document.getElementById('playButton').addEventListener('click', () => {
+        audio.play().catch(err => console.log(err));
+    })
+</script>
 <p>
     As a software developer<br />
     I faced a problem<br />
