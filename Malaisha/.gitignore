@@ -14,4 +14,4 @@ out/
 .classpath
 .factorypath
 
-/src/main/resources/audio/**.wav
+/src/main/resources/static/audio/**.wav
