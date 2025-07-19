@@ -1,9 +1,11 @@
 package igoroffline.practice;
 
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
+import io.micronaut.views.View;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +21,9 @@ public class MalaishaController {
         log.info("MalaishaController INIT");
     }
 
+    @View("hello")
     @Get("/hello")
-    public AgeRecord hello() {
-        return new AgeRecord(99);
+    public HttpResponse<AgeRecord> hello() {
+        return HttpResponse.ok(new AgeRecord(99));
     }
 }
