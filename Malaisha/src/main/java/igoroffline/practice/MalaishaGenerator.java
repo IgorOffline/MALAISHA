@@ -16,9 +16,9 @@ public class MalaishaGenerator {
 
     private final Logger log = LoggerFactory.getLogger(MalaishaGenerator.class);
 
-    private final MalaishaDatasource datasource;
+    private final MalaishaDatasourceParams datasource;
 
-    public MalaishaGenerator(MalaishaDatasource datasource) {
+    public MalaishaGenerator(MalaishaDatasourceParams datasource) {
         this.datasource = datasource;
     }
 
