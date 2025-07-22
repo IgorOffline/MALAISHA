@@ -16,6 +16,12 @@ public class MalaishaController {
 
     private static final Logger log = LoggerFactory.getLogger(MalaishaController.class);
 
+    private final MalaishaGenerator generator;
+
+    public MalaishaController(MalaishaGenerator generator) {
+        this.generator = generator;
+    }
+
     @PostConstruct
     public void init() {
         log.info("MalaishaController INIT");
@@ -25,5 +31,18 @@ public class MalaishaController {
     @Get("/hello")
     public HttpResponse<AgeRecord> hello() {
         return HttpResponse.ok(new AgeRecord(99));
+    }
+
+    @View("generate")
+    @Get("/generate")
+    public HttpResponse<AgeRecord> generate() {
+        generator.generate();
+        return HttpResponse.ok(new AgeRecord(200));
+    }
+
+    @View("populate")
+    @Get("/populate")
+    public HttpResponse<AgeRecord> populate() {
+        return HttpResponse.ok(new AgeRecord(300));
     }
 }
