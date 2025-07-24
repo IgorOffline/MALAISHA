@@ -1,19 +1,23 @@
 package igoroffline.practice;
 
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.views.View;
 import org.jdbi.v3.core.Jdbi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Controller("/v")
-public class Kontrola {
+import java.time.LocalDateTime;
 
-    private final Logger log = LoggerFactory.getLogger(Kontrola.class);
+@Controller("/v")
+public class Katarina {
+
+    private final Logger log = LoggerFactory.getLogger(Katarina.class);
 
     private final Jdbi jdbi;
 
-    public Kontrola(Jdbi jdbi) {
+    public Katarina(Jdbi jdbi) {
         this.jdbi = jdbi;
     }
 
@@ -33,5 +37,12 @@ public class Kontrola {
         log.info("albums= {}", albums);
 
         return "hello!";
+    }
+
+    @Get("/world")
+    @View("world")
+    public HttpResponse<Album> getWorld() {
+        final var now = LocalDateTime.now();
+        return HttpResponse.ok(new Album(-1, "N/A", now, now));
     }
 }
