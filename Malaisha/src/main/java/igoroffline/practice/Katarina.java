@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
-@Controller("/v")
+@Controller("/view")
 public class Katarina {
 
     private final Logger log = LoggerFactory.getLogger(Katarina.class);
@@ -21,7 +21,7 @@ public class Katarina {
         this.jdbi = jdbi;
     }
 
-    @Get("/h")
+    @Get("/hello")
     public String getHello() {
         final var one = jdbi.withHandle(handle -> handle.createQuery("SELECT 1").mapTo(Integer.class).one());
         log.info("one= {}", one);
